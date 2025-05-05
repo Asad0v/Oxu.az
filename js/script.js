@@ -207,7 +207,8 @@ window.makeView = async  function (num, id) {
     }
     await patchView(id, obj)
     await getData()
-    window.location.href = `http://127.0.0.1:5502/detail.htm?id=${id}`
+    // window.location.href = `http://127.0.0.1:5502/detail.htm?id=${id}`
+    window.location.href = `https://oxu-azbyrashid-git-main-rashids-projects-6ffc1934.vercel.app/detail.htm?id=${id}`
 
 
 
