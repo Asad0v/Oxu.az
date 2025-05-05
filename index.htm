@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="input.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+
+</head>
+<body>
+    <header class="sticky top-0 z-[100] bg-white" >
+        <div>
+            <div class="bg-[#051D39] px-5 py-1 justify-center items-center gap-2 hidden md:flex text-white">
+                <div class="max-w-[70%] mx-auto flex flex-row gap-2 items-center">
+                    <i class="fa-solid fa-bolt"></i>
+                    <marquee class="  font-semibold ">
+                        · Prezident İlham Əliyev Çinə rəsmi səfər edib. İki ölkə arasında əməkdaşlıq genişlənir.  · 
+                        Papa Fransisk sülh çağırışı edib. O, münaqişələrin diplomatik yolla həllini vurğulayıb. · 
+                        İstanbulda zəlzələ baş verib. Tələfat və dağıntı ilə bağlı araşdırma aparılır. · 
+                        Hava proqnozuna görə həftəsonu yağış gözlənilir. Temperaturun enməsi ehtimal olunur. · 
+                        ABŞ və Çin arasında yeni iqtisadi danışıqlar başlayıb. Ticarət gərginliyi azalmaqdadır. · 
+                        Afrika ölkələri neokolonializmə qarşı birgə bəyanat verib. Regional müstəqillik çağırılır. ·
+                        </marquee>
+                </div>
+            </div>
+        </div>
+        <div class="md:container mx-auto  flex justify-center px-4">
+            <div id="headerDiv1" class="flex px-5 py-3 pb-0   justify-between w-full bg-white  z-1  max-w-[1315px]  md:gap-[6%] ">
+                <img class="" src="./img/logo.svg" alt="logoPhoto">
+                <div class="px-3 py-0  justify-between  md:justify-center items-center gap-5 hidden md:flex" >
+                    <div class="bg-[#F63147] h-7 px-3 py-2 flex justify-between items-center  text-white rounded-xl gap-3    z-2">
+                        <i class="fa-solid fa-wifi"></i>
+                        <span class="font-semibold">LİVE</span>
+                    </div>
+                    <div class="flex justify-center items-center gap-2">
+                        <button id="toLeftBtn" class="hidden arrow-button text-[.8em] cursor-pointer border border-gray-300 text-gray-500 rounded-full h-6 w-6  justify-center items-center" onclick="scroll_left()"><i class="fa-solid fa-chevron-left"></i></button>
+                        <div id="scrollBox1" style="scrollbar-width: none; -ms-overflow-style: none;" class="scroll-smooth flex cursor-grab gap-4 flex-nowrap overflow-x-auto p-4 md:max-w-[250px] lg:max-w-[450px] " > 
+                            <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                              ilham Əliyevin çin səfəri
+                            </div>
+                            <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                              Papa Fransisk
+                            </div>
+                            <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                              istanbulda zəlzələ
+                            </div>
+                            <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                              Hava proqnozu
+                            </div>
+                            <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                              ABŞ-ÇİN iqtisadi münasibət
+                            </div>
+                            <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                              Neokolonializmlə mübarizə
+                            </div>
+                        </div>  
+                        <button class="arrow-button text-[.8em] cursor-pointer border border-gray-300 text-gray-500 rounded-full h-6 w-6 flex justify-center items-center" onclick="toRight()"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="flex gap-2 lg:gap-5 justify-center items-center">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <button id="btnLang" class="cursor-pointer border-[#464646] border-2 rounded-xl p-1 py-0 text-sm font-semibold  md:hidden">AZ ⏷</button>
+                    <!-- <i id="barI" class="fa-solid fa-bars"></i> -->
+                     <span id="barI" class="text-2xl cursor-pointer">☰</span>
+                </div>
+            </div>
+        </div>
+        <div id="langDiv" class="bg-white h-[100vh] w-full flex flex-col justify-center gap-10 items-center  z-50 ">
+            <img src="./img/logo.svg" alt="logoPhoto">
+            <div id="az" class="cursor-pointer border-2 p-2 rounded-4xl w-[280px]  flex justify-center items-center font-semibold">AZ</div>
+            <div id="ru" class="cursor-pointer border-2 p-2 rounded-4xl w-[280px]  flex justify-center items-center font-semibold">RU</div>
+            <div id="tr" class="cursor-pointer border-2 p-2 rounded-4xl w-[280px]  flex justify-center items-center font-semibold">TR</div>
+            <button id="btnMulti"  class=" flex justify-center cursor-pointer items-center bg-indigo-300 text-slate-800 w-15 h-15 text-xl rounded-3xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="barDiv" class="bg-white p-5 h-[100vh] w-full flex  flex-col justify-between items-center gap-5  z-[51]">
+            <div class="flex justify-between w-full pt-5">
+                <img src="./img/logo.svg" alt="logoPhoto">
+                <div class="flex gap-4">
+                    <div class="cursor-pointer w-10 border-[#464646] border-2 rounded-xl p-1 py-0 text-sm font-semibold"><i class="fa-regular fa-moon"></i></div>
+                    <button id="btnMulti2"  class=" flex justify-center cursor-pointer items-center text-xl"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <div class="flex gap-4">
+                <div class="p-2 bg-gray-200 rounded-2xl flex justify-center items-center"><img class="w-5" src="./img/facebook.svg" alt=""></div>
+                <div class="p-2 bg-gray-200 rounded-2xl flex justify-center items-center"><img class="w-5" src="./img/x.svg" alt=""></div>
+                <div class="p-2 bg-gray-200 rounded-2xl flex justify-center items-center"><img class="w-5" src="./img/telegram.svg" alt=""></div>
+                <div class="p-2 bg-gray-200 rounded-2xl flex justify-center items-center"><img class="w-5" src="./img/wp.svg" alt=""></div>
+                <div class="p-2 bg-gray-200 rounded-2xl flex justify-center items-center"><img class="w-5" src="./img/instagram.svg" alt=""></div>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3">
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Ana səhifə</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Siyasət</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">İqtisadiyyat</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Cəmiyyət</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Ordu</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Şou-biznes</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Kriminal</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">İdman</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Mədəniyyət</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Dünya</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Hadisə</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Müsahibə</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Turizm</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">İKT</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Baku TV</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">CinəMastercard</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Digər</div>
+                <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Maraqlı</div>
+            </div>
+            <div class="flex justify-between w-full gap-3">
+                <div class="bg-gray-200 px-3 py-2 rounded-3xl flex flex-col justify-center items-center  text-gray-600">
+                    <span>🛈</span>
+                    <span>Haqqımızda</span>
+                </div>
+                <div class="bg-gray-200 px-3 py-2 rounded-3xl flex flex-col justify-center items-center  text-gray-600">
+                    <i class="fa-solid fa-bullhorn"></i>
+                    <span>Reklam</span>
+                </div>
+                <div class="bg-gray-200 px-3 py-2 rounded-3xl flex flex-col justify-center items-center  text-gray-600">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Əlaqə</span>
+                </div>
+            </div>
+            <div class="flex justify-between w-full ">
+                <div class="bg-[#051D39] flex px-4 py-2 rounded-lg gap-2">
+                    <img src="./img/play-store.svg" alt="">
+                    <div class="text-white flex flex-col  justify-center items-start">
+                        <p class="uppercase text-[.6em] font-semibold">get in on</p>
+                        <p class="text-[.9em] font-bold">Google Play</p>
+                    </div>
+                </div>
+                <div class="bg-[#051D39] flex px-4 py-2 rounded-lg gap-2">
+                    <img src="./img/apple.svg" alt="">
+                    <div class="text-white flex flex-col  justify-center items-start">
+                        <p class="uppercase text-[.6em] font-semibold">get in on</p>
+                        <p class="text-[.9em] font-bold">App Store</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="mobHeader" class="px-5 py-0 flex justify-center items-center gap-5 md:hidden bg-white" >
+            <div class="bg-[#F63147] h-7 px-3 py-2 flex justify-between items-center  text-white rounded-xl gap-3    z-2">
+                <i class="fa-solid fa-wifi"></i>
+                <span class="font-semibold">live</span>
+            </div>
+            <button id="toLeftBtn2" class="arrow-button text-[1em] cursor-pointer border border-gray-500 text-gray-500 rounded-full h-8 w-8 hidden justify-center items-center" onclick="scroll_left()"><i class="fa-solid fa-chevron-left"></i></button>
+            <div id="scrollBox2" style="scrollbar-width: none; -ms-overflow-style: none;" class="scroll-smooth flex cursor-grab gap-4 flex-nowrap overflow-x-auto p-4 " > 
+                <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                  ilham Əliyevin çin səfəri
+                </div>
+                <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                  Papa Fransisk
+                </div>
+                <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                  istanbulda zəlzələ
+                </div>
+                <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                  Hava proqnozu
+                </div>
+                <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                  ABŞ-ÇİN iqtisadi münasibət
+                </div>
+                <div class="border rounded-xl font-semibold text-gray-600 whitespace-nowrap px-2 ">
+                  Neokolonializmlə mübarizə
+                </div>
+            </div>  
+            <button class="arrow-button text-[1em] cursor-pointer border border-gray-500 text-gray-500 rounded-full h-8 w-8 flex justify-center items-center" onclick="toRight()"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div id="divMarque" class="bg-[#051D39] px-5 py-1 flex justify-center items-center gap-2 md:hidden text-white">
+            <div class="max-w-[70%] mx-auto flex flex-row gap-2 items-center" >
+                <i class="fa-solid fa-bolt"></i>
+                <marquee class="z-20 font-semibold ">
+                    · Prezident İlham Əliyev Çinə rəsmi səfər edib. İki ölkə arasında əməkdaşlıq genişlənir.  · 
+                    Papa Fransisk sülh çağırışı edib. O, münaqişələrin diplomatik yolla həllini vurğulayıb. · 
+                    İstanbulda zəlzələ baş verib. Tələfat və dağıntı ilə bağlı araşdırma aparılır. · 
+                    Hava proqnozuna görə həftəsonu yağış gözlənilir. Temperaturun enməsi ehtimal olunur. · 
+                    ABŞ və Çin arasında yeni iqtisadi danışıqlar başlayıb. Ticarət gərginliyi azalmaqdadır. · 
+                    Afrika ölkələri neokolonializmə qarşı birgə bəyanat verib. Regional müstəqillik çağırılır. ·
+                    </marquee>
+            </div>
+        </div>
+        <div id="desktopHamMenu" class="hidden w-full h-[355px] bg-[#FAFDFC] ">
+            <div class="container mx-auto p-7 flex flex-col gap-10  ">
+                <div class="flex flex-wrap justify-center gap-10 max-w-[930px] mx-auto">
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Ana səhifə</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Siyasət</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">İqtisadiyyat</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Cəmiyyət</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Ordu</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Şou-biznes</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Kriminal</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">İdman</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Mədəniyyət</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Dünya</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Hadisə</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Müsahibə</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Turizm</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">İKT</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Baku TV</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">CinəMastercard</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Digər</div>
+                    <div class="border py-1 rounded-xl font-semibold text-sm text-gray-600 px-2">Maraqlı</div>
+                </div>
+                <div class="flex  justify-between    container max-w-[930px] m-auto     ">
+                    <div>
+                        <p>Karyera</p>
+                        <p class="underline text-gray-600">cv@oxu.az</p>
+                    </div>
+                    <div>
+                        <p>Ümumi sorğular üçün</p>
+                        <p class="underline text-gray-600">editor@oxu.az, 055 224 76 86,</p>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </header>
+    <main class="pb-5 relative">
+        <div class=" max-w-[100%] md:max-w-[70%] mx-auto h-[100px]  md:h-[90px] mb-3">
+            <iframe class=" h-[100%] w-full border-none overflow-hidden" scrolling="no" src="https://ads.newmedia.az/www/images/8747db0639abf487b28f4635d8221f0a/index.html?clickTag=https://ads2.newmedia.az/www/delivery/ck.php?oaparams=2__bannerid=16323__zoneid=1290__cb=ac38a9e0b2__campaignid=3015801__p1=1746103378__p2=698539bf792f3ed68136c528a132__p3=498019429.a87573001545e4058d7420725e6dd9375f8fa55f__oadest=https%3A%2F%2Fbit.ly%2F46qRBeX%3Futm_content%3DNewmedia%26utm_source%3Doxu.az%26utm_medium%3Diab_banner%26utm_campaign%3DOxu.az_invest%26utm_device%3Ddesktop" 
+            frameborder="0"></iframe>
+        </div>
+        <div class="max-w-[100%] md:max-w-[70%] mx-auto  flex justify-start items-center gap-[5%] ">
+            <div id="swiper_js" class=" max-w-[100%] md:max-w-[70%]  h-[520px]  md:h-[520px]  ">
+                <div class="swiper mySwiper relative">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide flex justify-center  items-center">
+                            <img   src="./img/xebersagirdler.webp" alt="">
+                            <div class="  lg:h-[200px] pb-16  md:pb-18 flex flex-col justify-evenly sm:justify-start shadow-md w-[90%] p-[20px_15px] lg:p-[40px_35px] md:p-[30px_25px] bg-[#FAFAFA] absolute opacity-70 text-[#333] bottom-0  left-1/2 -translate-x-1/2 z-[100]">
+                                <div class="flex justify-between">
+                                    <div class="flex gap-3 justify-between text-[.7rem] md:text-sm">
+                                        <p class="text-[#1894a0] font-bold uppercase ">Siyasət</p>
+                                        <p class="uppercase">Bu gun / 17:20</p>
+                                        <p class=""><i class="fa-regular fa-eye"></i> 1210</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="bg-[#f66ba6] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "><i class="fa-regular fa-image"></i> <p>foto</p></div>
+                                        <div class=" bg-[#1894a0] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "> <i class="fa-solid fa-pen-to-square"></i><p>şərh</p></div>
+                                    </div>
+                                </div>
+                                <p class="textline-camp-2  text-left font-semibold pt-2 text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo omnis atque exercitationem explicabo amet?</p>
+                            </div>
+                        </div>                        
+                        <div class="swiper-slide flex justify-center items-center">
+                            <img   src="./img/iran-pakistan.webp" alt="">
+                            <div class="  lg:h-[200px] pb-16  md:pb-18 flex flex-col justify-evenly sm:justify-start shadow-md w-[90%] p-[20px_15px] lg:p-[40px_35px] md:p-[30px_25px] bg-[#FAFAFA] absolute opacity-70 text-[#333] bottom-0  left-1/2 -translate-x-1/2 z-[100]">
+                                <div class="flex justify-between">
+                                    <div class="flex gap-3 justify-between text-[.7rem] md:text-sm">
+                                        <p class="text-[#1894a0] font-bold uppercase ">Siyasət</p>
+                                        <p class="uppercase">Bu gun / 17:20</p>
+                                        <p class=""><i class="fa-regular fa-eye"></i> 1210</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="bg-[#f66ba6] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "><i class="fa-regular fa-image"></i> <p>foto</p></div>
+                                        <div class=" bg-[#1894a0] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "> <i class="fa-solid fa-pen-to-square"></i><p>şərh</p></div>
+                                    </div>
+                                </div>
+                                <p class="line-camp-2  text-left font-semibold pt-2 text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo omnis atque exercitationem explicabo amet?</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide flex justify-center items-center">
+                            <img   src="./img/qeza.jpg" alt="">
+                            <div class=" lg:h-[200px] pb-16  md:pb-18 shadow-md w-[90%] p-[20px_15px] lg:p-[40px_35px] md:p-[30px_25px] bg-[#FAFAFA] absolute opacity-70 text-[#333] bottom-0  left-1/2 -translate-x-1/2 z-[100]">
+                                <div class="flex justify-between">
+                                    <div class="flex gap-3 justify-between text-[.7rem] md:text-sm">
+                                        <p class="text-[#1894a0] font-bold uppercase ">Siyasət</p>
+                                        <p class="uppercase">Bu gun / 17:20</p>
+                                        <p class=""><i class="fa-regular fa-eye"></i> 1210</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="bg-[#f66ba6] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "><i class="fa-regular fa-image"></i> <p>foto</p></div>
+                                        <div class=" bg-[#1894a0] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "> <i class="fa-solid fa-pen-to-square"></i><p>şərh</p></div>
+                                    </div>
+                                </div>
+                                <p class="line-camp-2  text-left font-semibold pt-2 text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo omnis atque exercitationem explicabo amet?</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide flex justify-center items-center">
+                            <img   src="./img/xocali.webp" alt="">
+                            <div class=" lg:h-[200px] pb-16  md:pb-18 shadow-md w-[90%] p-[20px_15px] lg:p-[40px_35px] md:p-[30px_25px] bg-[#FAFAFA] absolute opacity-70 text-[#333] bottom-0  left-1/2 -translate-x-1/2 z-[100]">
+                                <div class="flex justify-between">
+                                    <div class="flex gap-3 justify-between text-[.7rem] md:text-sm">
+                                        <p class="text-[#1894a0] font-bold uppercase ">Siyasət</p>
+                                        <p class="uppercase">Bu gun / 17:20</p>
+                                        <p class=""><i class="fa-regular fa-eye"></i> 1210</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="bg-[#f66ba6] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "><i class="fa-regular fa-image"></i> <p>foto</p></div>
+                                        <div class=" bg-[#1894a0] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "> <i class="fa-solid fa-pen-to-square"></i><p>şərh</p></div>
+                                    </div>
+                                </div>
+                                <p class="line-camp-2  text-left font-semibold pt-2 text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo omnis atque exercitationem explicabo amet?</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide flex justify-center items-center bg-[url('/img/elza.jpg')] bg-cover bg-center h-screen">
+                            <img   src="./img/metro.jpg" alt="">
+                            <div class=" lg:h-[200px] pb-16  md:pb-18 shadow-md w-[90%] p-[20px_15px] lg:p-[40px_35px] md:p-[30px_25px] bg-[#FAFAFA] absolute opacity-70 text-[#333] bottom-0  left-1/2 -translate-x-1/2 z-[100]">
+                                <div class="flex justify-between">
+                                    <div class="flex gap-3 justify-between text-[.7rem] md:text-sm">
+                                        <p class="text-[#1894a0] font-bold uppercase ">Siyasət</p>
+                                        <p class="uppercase">Bu gun / 17:20</p>
+                                        <p class=""><i class="fa-regular fa-eye"></i> 1210</p>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="bg-[#f66ba6] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "><i class="fa-regular fa-image"></i> <p>foto</p></div>
+                                        <div class=" bg-[#1894a0] flex md:hidden lg:flex text-white justify-center items-center gap-2 p-1 rounded-md text-[0.6rem] sm:text-sm "> <i class="fa-solid fa-pen-to-square"></i><p>şərh</p></div>
+                                    </div>
+                                </div>
+                                <p class="line-camp-2  text-left font-semibold pt-2 text-black">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus illo omnis atque exercitationem explicabo amet?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    
+                    <div class="swiper-button-next right-[100px]  "></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                
+                
+            </div>
+            <div class="w-[25%]  h-[520px]  gap-5 md:flex  md:flex-col justify-between hidden">
+                <div class="w-full h-[50%]">
+                    <iframe class="h-[100%] w-full border-none overflow-hidden" scrolling="no" src="https://ads.newmedia.az/www/images/90296520f73edce265240120d6d242f8/index.html?clickTag=https://ads2.newmedia.az/www/delivery/ck.php?oaparams=2__bannerid=17142__zoneid=1288__cb=48f02507a1__campaignid=3016125__p1=1746105182__p2=e665cd9bac3b2296813735e69f55__p3=498134940.8455fb6e4a6370271910b729b2765773c664fa81__oadest=https%3A%2F%2Fcinemastercard.az%2Faz%2Ffilms%2Ftagiyev-car%2F%3Futm_content%3DNewmedia%26utm_source%3Doxu.az%26utm_medium%3Diab_banner%26utm_campaign%3DCinemaplus_oxu.az_new%26utm_device%3Ddesktop" frameborder="0"></iframe>
+                </div>
+                <div class="w-full h-[50%]">
+                    <iframe class="h-[100%] w-full border-none overflow-hidden" scrolling="no" src="https://cdn.newmedia.az/storage/2025/02/18/5f9c34d1c67481911f2d14c152bee7ca/" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+        <div id="fixedBar" class="h-[95.6vh] flex flex-col justify-between  fixed left-0  bottom-0 z-[101]  w-[55px] py-3 bg-[#fbfbfa6f]">
+            <div class="flex flex-col justify-center items-center gap-3">
+                <div id="az" class="cursor-pointer border-2  rounded-4xl w-10   flex justify-center items-center font-semibold">AZ</div>
+                <div id="ru" class="cursor-pointer border-2  rounded-4xl w-10   flex justify-center items-center font-semibold">RU</div>
+                <div id="tr" class="cursor-pointer border-2  rounded-4xl w-10   flex justify-center items-center font-semibold">TR</div>
+                <i class="fa-solid fa-circle-info"></i> 
+                <div class="cursor-pointer w-10 border-[#464646] border-2 rounded-xl p-1 py-0 text-sm font-semibold"><i class="fa-regular fa-moon"></i></div>
+            </div>
+            <div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/facebook.svg" alt=""></div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/x.svg" alt=""></div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/telegram.svg" alt=""></div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/wp.svg" alt=""></div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/instagram.svg" alt=""></div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/apple.svg" alt=""></div>
+                <div class=" rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/play-store.svg" alt=""></div>
+            </div>
+        </div>
+        <div id="cards" class="mt-[20px] container mx-auto px-16 flex flex-wrap justify-center gap-10 w-[89%]">
+        </div>
+        <div id="reklamleft" class=" absolute top-10 left-[60px] h-[591px] max-w-[160px]">
+            <iframe class="w-[100%] h-[100%]" scrolling="no"  src="https://ads.newmedia.az/www/images/a4c1aa4df7a4902e3889475445b6874c/index.html" frameborder="0"></iframe>
+        </div>
+        <div id="reklamright" class=" absolute top-10 right-[60px] h-[591px] max-w-[160px]">
+            <iframe class="w-[100%] h-[100%]" scrolling="no"  src="https://ads.newmedia.az/www/images/a4c1aa4df7a4902e3889475445b6874c/index.html" frameborder="0"></iframe>
+        </div>
+    </main>
+    <footer class="bg-[#EFF1F0] p-[35px_13px] flex flex-col md:flex-row gap-10 md:gap-20 justify-center">
+        <div class="max-w-[400px] h-[70px]">
+            <img class="w-[100%]" src="./img/footer-logo.svg" alt="">
+        </div>
+        <div class="text-sm flex flex-col gap-5 max-w-[320px]">
+            <p>Bütün hüquqlar qorunur © 2013-2025</p>
+            <p>Oxu.Az 24 saat ərzində, Azərbaycan, türk və rus dillərində, ölkədə və dünyada baş verən ən aktual və maraqlı hadisələr barədə operativ xəbərlər, 
+                oxucuları və cəmiyyəti maraqlandıran suallara cavablar, analitik məqalələr, foto və videohesabatlar hazırlayır.
+            </p>
+            <div class="flex gap-4  justify-start items-center">
+                <div class="bg-[#1876f241] h-8 w-8 rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/facebook.svg" alt=""></div>
+                <div class="bg-[#0088cc54] h-8 w-8  rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/telegram.svg" alt=""></div>
+                <div class="bg-[#25d3653c] h-8 w-8  rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/wp.svg" alt=""></div>
+                <div class="bg-[#b5399c38] h-8 w-8  rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/instagram.svg" alt=""></div>
+                <div class="bg-[#ffffffd5] h-8 w-8  rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/apple.svg" alt=""></div>
+                <div class="bg-[#ffffffd5] h-8 w-8  rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/play-store.svg" alt=""></div>
+                <!-- <div class="bg-[#6ca1e83c] h-8 w-8  rounded-2xl flex justify-center items-center"><img class="w-5 h-10" src="./img/x.svg" alt=""></div> -->
+            </div>
+        </div>
+        <div class="flex flex-col gap-3 text-lg text-gray-600">
+            <p>Karyera <br><span class="underline">cv@oxu.az</span></p>
+            <p>Ümumi sorğular üçün <br><span class="underline">editor@oxu.az <br>
+                055 224 76 86</span>
+            </p>
+        </div>
+        <div>
+            <p class="flex flex-col text-gray-600">
+                <a class="underline" href="">Saytda reklam</a>
+                <a class="underline" href="">Bizimlə əlaqə</a>
+                <a class="underline" href="">Məxfilik siyasəti</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+      
+        
+        var swiper = new Swiper(".mySwiper", {
+          spaceBetween: 30,
+          centeredSlides: true,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          loop:true
+        });
+      </script>
+    <script src="./js/script.js" type="module"></script>
+</body>
+</html>
