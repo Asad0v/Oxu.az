@@ -150,8 +150,8 @@ function printCards() {
                                 <div class="flex justify-between">
                                 <p class="text-[#1a939c]">${item.title}</p>
                                 <div class="flex gap-3">
-                                <p id="like-${item.id}" onclick=" makeLike('${item.id}', ${item.like}, ${true})" class="flex justify-center items-center gap-1 "><i class="hover:text-[#1a939c]  cursor-pointer fa-regular fa-thumbs-up"></i> <span>${item.like}</span></p>
-                                <p id="dislike-${item.id}" onclick=" makeLike('${item.id}', ${item.dislike})"  class="flex justify-center items-center gap-1 "><i class="hover:text-red-500  cursor-pointer fa-regular fa-thumbs-down"></i> <span>${item.dislike}</span></p>
+                                <p id="likeBtn${item.id}" onclick=" makeLike('${item.id}',  ${true})" class="flex justify-center items-center gap-1 "><i class="hover:text-[#1a939c]  cursor-pointer fa-regular fa-thumbs-up"></i> <span>${item.like}</span></p>
+                                <p id="disLikeBtn${item.id}" onclick=" makeLike('${item.id}')"  class="flex justify-center items-center gap-1 "><i class="hover:text-red-500  cursor-pointer fa-regular fa-thumbs-down"></i> <span>${item.dislike}</span></p>
                                         </div>
                                         </div>
                                         
@@ -159,46 +159,101 @@ function printCards() {
                                         </div>`
     })
     
-    data.forEach(obj => {       
-        const vote = localStorage.getItem(`voted-${obj.id}`);
-        const likeBtn = document.getElementById(`like-${obj.id}`);
-        const dislikeBtn = document.getElementById(`dislike-${obj.id}`);
+    // data.forEach(obj => {       
+    //     const vote = localStorage.getItem(`voted-${obj.id}`);
+        
+    //     const likeBtn = document.getElementById(`like-${obj.id}`);
+    //     const dislikeBtn = document.getElementById(`dislike-${obj.id}`);
     
-        if (vote === "like" && likeBtn) {
-            likeBtn.style.color = "#1894a0";
-        } else if (vote === "dislike" && dislikeBtn) {
-            dislikeBtn.style.color = "#f66ba6";
+    //     if (vote === "like" && likeBtn) {
+    //         likeBtn.style.color = "#1894a0";
+    //     } else if (vote === "dislike" && dislikeBtn) {
+    //         dislikeBtn.style.color = "#f66ba6";
+    //     }
+    // });
+    handleLikeColor()
+    localStorage.clear()
+}
+function handleLikeColor() {
+    data.forEach(item => {
+        const likeBtn = document.getElementById(`likeBtn${item.id}`)
+        const disLikeBtn = document.getElementById(`disLikeBtn${item.id}`)
+
+        if (item.isLike) {
+            likeBtn.style.color = '#1894a0'
+            disLikeBtn.style.color = '#051D39'
         }
-    });
+
+        if (item.isDislike) {
+            disLikeBtn.style.color = 'red'
+            likeBtn.style.color = '#051D39'
+        }
+    })
 }
+
 // let liker 
-window.makeLike = async function (id, num, isLike) {
-    // let like = data.find(item => item.id == id).like     
-    if (localStorage.getItem(`voted-${id}`)) {
-        return; // artıq səs verib
-    }
-    let obj
-    if (isLike) {
-        obj = {
-            like: num+1
-        };
-        localStorage.setItem(`voted-${id}`, "like");
+window.makeLike = async function (id, status) {
+    let element = data.find(item => item.id == id);
+
+    if (status) {
+        if (!element.isLike) {
+            element.like += 1;
+            element.isLike = true;
+        }
+        else{
+            element.like -= 1;
+            element.isLike = false;
+        }
+        if (element.isDislike) {
+            element.dislike -= 1;
+            element.isDislike = false;
+        }
     } else {
-        obj = {
-            dislike: num+1
-        };
-        localStorage.setItem(`voted-${id}`, "dislike");
+        if (!element.isDislike) {
+            element.dislike += 1;
+            element.isDislike = true;
+        }else{
+            element.dislike -= 1;
+            element.isDislike = false;
+
+        }
+        if (element.isLike) {
+            element.like -= 1;
+            element.isLike = false;
+        }
     }
-    
-    await patchNews(id, obj)
 
-    // localStorage.setItem(`voted-${id}`, true);
+    console.log("Updated element:", element);
 
-    data = await getAllNews()
-    printCards()
-    
-    
+    await patchNews(id, element);      // Serverə dəyişiklikləri göndər
+    data = await getAllNews();         // Yenilənmiş məlumatları al
+    printCards();                      // Yeni məlumatları ekrana yazdır
 }
+
+// await getData()
+
+    // if (localStorage.getItem(`voted-${id}`)) {
+    //     return; // artıq səs verib
+    // }
+    // let obj
+    // if (isLike) {
+    //     obj = {
+    //         like: num+1
+    //     };
+    //     localStorage.setItem(`voted-${id}`, "like");
+    // } else {
+    //     obj = {
+    //         dislike: num+1
+    //     };
+    //     localStorage.setItem(`voted-${id}`, "dislike");
+    // }
+    
+    // await patchNews(id, obj)
+
+    // // localStorage.setItem(`voted-${id}`, true);
+
+    // data = await getAllNews()
+    // printCards()
 window.makeView = async  function (num, id) {
     console.log(num,id);
     let obj
